@@ -1,11 +1,11 @@
-# document-scanner
+# mdocument-scanner
 
 Document scanner
 
 ## Install
 
 ```bash
-npm install document-scanner
+npm install mdocument-scanner
 npx cap sync
 ```
 

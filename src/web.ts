@@ -1,8 +1,8 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { DocumentScannerPlugin, ScanDocumentOptions, ScanDocumentResponse } from './definitions';
+import type { MDocumentScannerPlugin, ScanDocumentOptions, ScanDocumentResponse } from './definitions';
 
-export class DocumentScannerWeb extends WebPlugin implements DocumentScannerPlugin {
+export class MDocumentScannerWeb extends WebPlugin implements MDocumentScannerPlugin {
   async scanDocument(options?: ScanDocumentOptions): Promise<ScanDocumentResponse> {
     console.log(options)
     throw this.unimplemented('Not implemented on web.');
