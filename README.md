@@ -2,6 +2,8 @@
 
 Document scanner
 
+Plugin is in development stage.
+
 ## Install
 
 ```bash
