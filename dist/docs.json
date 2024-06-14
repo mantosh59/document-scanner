@@ -1,0 +1,132 @@
+{
+  "api": {
+    "name": "EGDocScannerPlugin",
+    "slug": "egdocscannerplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "scanDocument",
+        "signature": "(options: ScanDocumentOptions) => Promise<ScanDocumentResponse>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "ScanDocumentOptions"
+          }
+        ],
+        "returns": "Promise<ScanDocumentResponse>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "ScanDocumentResponse",
+          "ScanDocumentOptions"
+        ],
+        "slug": "scandocument"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "ScanDocumentResponse",
+      "slug": "scandocumentresponse",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "scannedFiles",
+          "tags": [],
+          "docs": "This is an array with either file paths or base64 images for the\ndocument scan.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "status",
+          "tags": [],
+          "docs": "The status lets you know if the document scan completes successfully,\nor if the user cancels before completing the document scan.",
+          "complexTypes": [
+            "ScanDocumentResponseStatus"
+          ],
+          "type": "ScanDocumentResponseStatus"
+        }
+      ]
+    },
+    {
+      "name": "ScanDocumentOptions",
+      "slug": "scandocumentoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "maxNumDocuments",
+          "tags": [
+            {
+              "text": ": 4",
+              "name": "default"
+            }
+          ],
+          "docs": "Android only: The maximum number of photos an user can take (not counting photo retakes)",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "responseType",
+          "tags": [
+            {
+              "text": ": ResponseType.ImageFilePath",
+              "name": "default"
+            }
+          ],
+          "docs": "The response comes back in this format on success. It can be the document\nscan image file paths or base64 images.",
+          "complexTypes": [
+            "ResponseType"
+          ],
+          "type": "ResponseType"
+        }
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "name": "ScanDocumentResponseStatus",
+      "slug": "scandocumentresponsestatus",
+      "members": [
+        {
+          "name": "Success",
+          "value": "'success'",
+          "tags": [],
+          "docs": "The status comes back as success if the document scan completes\nsuccessfully."
+        },
+        {
+          "name": "Cancel",
+          "value": "'cancel'",
+          "tags": [],
+          "docs": "The status comes back as cancel if the user closes out of the camera\nbefore completing the document scan."
+        }
+      ]
+    },
+    {
+      "name": "ResponseType",
+      "slug": "responsetype",
+      "members": [
+        {
+          "name": "Base64",
+          "value": "'base64'",
+          "tags": [],
+          "docs": "Use this response type if you want document scan returned as base64 images."
+        },
+        {
+          "name": "ImageFilePath",
+          "value": "'imageFilePath'",
+          "tags": [],
+          "docs": "Use this response type if you want document scan returned as inmage file paths."
+        }
+      ]
+    }
+  ],
+  "typeAliases": [],
+  "pluginConfigs": []
+}
