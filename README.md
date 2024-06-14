@@ -1,11 +1,11 @@
-# eg-doc-scanner
+# document-scanner
 
 Document scanner
 
 ## Install
 
 ```bash
-npm install eg-doc-scanner
+npm install document-scanner
 npx cap sync
 ```
 

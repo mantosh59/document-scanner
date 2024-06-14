@@ -1,9 +1,9 @@
 import { registerPlugin } from '@capacitor/core';
 
-import type { EGDocScannerPlugin } from './definitions';
+import type { DocumentScannerPlugin } from './definitions';
 
-const EGDocScanner = registerPlugin<EGDocScannerPlugin>('EGDocScanner', {
-  web: () => import('./web').then(m => new m.EGDocScannerWeb()),
+const EGDocScanner = registerPlugin<DocumentScannerPlugin>('DocumentScanner', {
+  web: () => import('./web').then(m => new m.DocumentScannerWeb()),
 });
 
 export * from './definitions';

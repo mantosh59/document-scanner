@@ -1,0 +1,4 @@
+module EGDocScannerPlugin {
+    header "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/EGDocScannerPlugin-Swift.h"
+    requires objc
+}

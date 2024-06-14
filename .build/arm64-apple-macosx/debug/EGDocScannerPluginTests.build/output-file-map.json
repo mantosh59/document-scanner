@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.build/master.swiftdeps"
+  },
+  "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Tests/EGDocScannerPluginTests/EGDocScannerPluginTests.swift": {
+    "dependencies": "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.build/EGDocScannerPluginTests.d",
+    "object": "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.build/EGDocScannerPluginTests.swift.o",
+    "swiftmodule": "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.build/EGDocScannerPluginTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.build/EGDocScannerPluginTests.swiftdeps"
+  }
+}

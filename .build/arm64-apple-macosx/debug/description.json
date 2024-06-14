@@ -1,0 +1,507 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EgDocScannerPackageTests.xctest/Contents/MacOS/EgDocScannerPackageTests",
+      "packagePath" : "/Users/mantoshbehera/Documents/plugins/document-scanner",
+      "productName" : "EgDocScannerPackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.EGDocScannerPlugin-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/sources",
+      "importPath" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/EGDocScanner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/EGDocScannerPlugin.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/Errors.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/FileUtil.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/FontSizeCalculator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/PDFCreator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/ResponseType.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "EGDocScannerPlugin",
+      "moduleOutputPath" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.swiftmodule",
+      "objects" : [
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/EGDocScanner.swift.o",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/EGDocScannerPlugin.swift.o",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/Errors.swift.o",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/FileUtil.swift.o",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/FontSizeCalculator.swift.o",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/PDFCreator.swift.o",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/ResponseType.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx10.13",
+        "-swift-version",
+        "5",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j12",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/EGDocScannerPlugin-Swift.h",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-diagnostic-style=llvm",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "document_scanner"
+      ],
+      "outputFileMapPath" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/EGDocScanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/EGDocScannerPlugin.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/Errors.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/FileUtil.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/FontSizeCalculator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/PDFCreator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/ResponseType.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/EGDocScanner.swift",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/EGDocScannerPlugin.swift",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/Errors.swift",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/FileUtil.swift",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/FontSizeCalculator.swift",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/PDFCreator.swift",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/ResponseType.swift"
+      ],
+      "tempsPath" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.EGDocScannerPluginTests-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.build/sources",
+      "importPath" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Tests/EGDocScannerPluginTests/EGDocScannerPluginTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "EGDocScannerPluginTests",
+      "moduleOutputPath" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.swiftmodule",
+      "objects" : [
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.build/EGDocScannerPluginTests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-swift-version",
+        "5",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j12",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-diagnostic-style=llvm",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "document_scanner"
+      ],
+      "outputFileMapPath" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.build/EGDocScannerPluginTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Tests/EGDocScannerPluginTests/EGDocScannerPluginTests.swift"
+      ],
+      "tempsPath" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "EGDocScannerPlugin" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "EGDocScannerPlugin",
+      "-package-name",
+      "document_scanner",
+      "-incremental",
+      "-c",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/EGDocScanner.swift",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/EGDocScannerPlugin.swift",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/Errors.swift",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/FileUtil.swift",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/FontSizeCalculator.swift",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/PDFCreator.swift",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/ResponseType.swift",
+      "-I",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug",
+      "-target",
+      "arm64-apple-macosx10.13",
+      "-swift-version",
+      "5",
+      "-enable-batch-mode",
+      "-index-store-path",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j12",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-module-cache-path",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/EGDocScannerPlugin-Swift.h",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-diagnostic-style=llvm",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "document_scanner",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "EGDocScannerPluginTests" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "EGDocScannerPluginTests",
+      "-package-name",
+      "document_scanner",
+      "-incremental",
+      "-c",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Tests/EGDocScannerPluginTests/EGDocScannerPluginTests.swift",
+      "-I",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-swift-version",
+      "5",
+      "-enable-batch-mode",
+      "-index-store-path",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j12",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-module-cache-path",
+      "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-diagnostic-style=llvm",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "document_scanner",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "EGDocScannerPlugin" : [
+      "Cordova",
+      "Capacitor"
+    ],
+    "EGDocScannerPluginTests" : [
+      "EGDocScannerPlugin",
+      "Cordova",
+      "Capacitor"
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "writeCommands" : {
+    "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EgDocScannerPackageTests.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/EGDocScanner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/EGDocScannerPlugin.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/Errors.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/FileUtil.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/FontSizeCalculator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/PDFCreator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/ResponseType.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.build/EGDocScannerPluginTests.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EgDocScannerPackageTests.product/Objects.LinkFileList"
+    },
+    "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/EGDocScanner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/EGDocScannerPlugin.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/Errors.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/FileUtil.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/FontSizeCalculator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/PDFCreator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Sources/EGDocScannerPlugin/ResponseType.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPlugin.build/sources"
+    },
+    "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/mantoshbehera/Documents/plugins/document-scanner/ios/Tests/EGDocScannerPluginTests/EGDocScannerPluginTests.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/EGDocScannerPluginTests.build/sources"
+    },
+    "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/mantoshbehera/Documents/plugins/document-scanner/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-export interface EGDocScannerPlugin {
+export interface DocumentScannerPlugin {
   scanDocument(options: ScanDocumentOptions): Promise<ScanDocumentResponse>
 }
 
