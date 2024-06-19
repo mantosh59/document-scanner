@@ -117,96 +117,46 @@ import PDFKit
         _ controller: VNDocumentCameraViewController,
         didFinishWith scan: VNDocumentCameraScan
     ) {
-        // let pdf = createPDF(from: scan)
-        let images = (0..<scan.pageCount).map {scan.imageOfPage(at: $0)}
-        // Iterate over the images
-    images.forEach { image in
- 
-        // 1. Get the underlying Quartz image data, used to recognize the text
-        guard let cgImage = image.cgImage else {
-            return
-        }
- 
-        // 2. Recognize the text on the image
-        let recognizedText: [VNRecognizedText] = self.recognizeText(from: cgImage)
- 
-        // 3. Calculate the size of the PDF page we are going to create
-        let pageWidth = image.size.width
-        let pageHeight = image.size.height
-        let pageRect = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
- 
-        // 3. Initialize a PDF page
-        context.beginPage(withBounds: pageRect, pageInfo: [:])
- 
-         // 4. Iterate over the lines of recognized text in order to write the text layer of the PDF
-        recognizedText.forEach { text in
-            self.writeTextOnTextBoxLevel(recognizedText: $0, on: drawContext, bounds: pageRect)
-        }
- 
-        // 5. Draw the image on the PDF page
-        self.draw(image: $0, on: drawContext, withSize: pageRect)
-    }
-        
-          let pdfRenderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: 595, height: 842)) // A4 paper size
- let data = pdfRenderer.pdfData { context in
-            
-            context.beginPage()
-            
-            let attributes = [
-                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 72)
-            ]
-            
-            // adding image to pdf from assets
-            // add an image to xcode assets and rename this.
-            let appleLogo = UIImage.init(named: "apple")
-            let appleLogoRect = CGRect(x: 20, y: 150, width: 400, height: 350)
-            appleLogo!.draw(in: appleLogoRect)
-            
-            // adding image from SF Symbols
-            let globeIcon = UIImage(systemName: "globe")
-            let globeIconRect = CGRect(x: 150, y: 550, width: 100, height: 100)
-            globeIcon!.draw(in: globeIconRect)
-            
-        }
-        // var results: [String] = []
+      
+        var results: [String] = []
         
         // loop through all scanned pages
-        // for pageNumber in 0...scan.pageCount - 1 {
+        for pageNumber in 0...scan.pageCount - 1 {
             
-        //     // convert scan UIImage to jpeg data
-        //     guard let scannedDocumentImage: Data = scan
-        //         .imageOfPage(at: pageNumber)
-        //         .jpegData(compressionQuality: CGFloat(self.croppedImageQuality) / CGFloat(100)) else {
-        //         goBackToPreviousView(controller)
-        //         self.errorHandler("Unable to get scanned document in jpeg format")
-        //         return
-        //     }
+            // convert scan UIImage to jpeg data
+            guard let scannedDocumentImage: Data = scan
+                .imageOfPage(at: pageNumber)
+                .jpegData(compressionQuality: CGFloat(self.croppedImageQuality) / CGFloat(100)) else {
+                goBackToPreviousView(controller)
+                self.errorHandler("Unable to get scanned document in jpeg format")
+                return
+            }
             
-        //     switch responseType {
-        //         case ResponseType.base64:
-        //             // convert scan jpeg data to base64
-        //             let base64EncodedImage: String = scannedDocumentImage.base64EncodedString()
-        //             results.append(base64EncodedImage)
-        //         case ResponseType.imageFilePath:
-        //             do {
-        //                 // save scan jpeg
-        //                 let croppedImageFilePath = FileUtil().createImageFile(pageNumber)
-        //                 try scannedDocumentImage.write(to: croppedImageFilePath)
+            switch responseType {
+                case ResponseType.base64:
+                    // convert scan jpeg data to base64
+                    let base64EncodedImage: String = scannedDocumentImage.base64EncodedString()
+                    results.append(base64EncodedImage)
+                case ResponseType.imageFilePath:
+                    do {
+                        // save scan jpeg
+                        let croppedImageFilePath = FileUtil().createImageFile(pageNumber)
+                        try scannedDocumentImage.write(to: croppedImageFilePath)
                         
-        //                 // store image file path
-        //                 results.append(croppedImageFilePath.absoluteString)
-        //             } catch {
-        //                 goBackToPreviousView(controller)
-        //                 self.errorHandler("Unable to save scanned image: \(error.localizedDescription)")
-        //                 return
-        //             }
-        //         default:
-        //             self.errorHandler(
-        //                 "responseType must be \(ResponseType.base64) or \(ResponseType.imageFilePath)"
-        //             )
-        //     }
+                        // store image file path
+                        results.append(croppedImageFilePath.absoluteString)
+                    } catch {
+                        goBackToPreviousView(controller)
+                        self.errorHandler("Unable to save scanned image: \(error.localizedDescription)")
+                        return
+                    }
+                default:
+                    self.errorHandler(
+                        "responseType must be \(ResponseType.base64) or \(ResponseType.imageFilePath)"
+                    )
+            }
             
-        // }
+        }
         
         // exit document scanner
         goBackToPreviousView(controller)
