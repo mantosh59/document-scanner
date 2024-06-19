@@ -1,6 +1,5 @@
 import Foundation
 import VisionKit
-import PDFKit
 
 @available(iOS 13.0, *)
 @objc public class DocumentScanner: NSObject, VNDocumentCameraViewControllerDelegate {
@@ -218,27 +217,5 @@ import PDFKit
         
     return data as Data
 }
-
-}
-
-
-// PDF Viewer
-struct PDFKitView: UIViewRepresentable {
-    
-    let pdfDocument: PDFDocument
-    
-    init(pdfData pdfDoc: PDFDocument) {
-        self.pdfDocument = pdfDoc
-    }
-    
-    func makeUIView(context: Context) -> PDFView {
-        let pdfView = PDFView()
-        pdfView.document = pdfDocument
-        pdfView.autoScales = true
-        return pdfView
-    }
-    
-    func updateUIView(_ pdfView: PDFView, context: Context) {
-        pdfView.document = pdfDocument
-    }
+ 
 }
