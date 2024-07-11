@@ -1,4 +1,4 @@
-export interface MDocumentScannerPlugin {
+export interface MdocumentScannerPlugin {
   scanDocument(options: ScanDocumentOptions): Promise<ScanDocumentResponse>
 }
 

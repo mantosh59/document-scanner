@@ -1,19 +1,16 @@
-package com.mantosh.plugins.documentscanner;
+package com.mantosh.plugins.mdocumentscanner;
 
 import static com.google.mlkit.vision.documentscanner.GmsDocumentScannerOptions.SCANNER_MODE_FULL;
 
 import android.Manifest;
 import android.app.Activity;
-import android.net.Uri;
-import android.os.Build;
+import android.graphics.Bitmap;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.IntentSenderRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.core.content.FileProvider;
 
-import com.getcapacitor.JSArray;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -25,14 +22,22 @@ import com.google.mlkit.vision.documentscanner.GmsDocumentScanning;
 import com.google.mlkit.vision.documentscanner.GmsDocumentScanningResult;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Base64;
 
-@CapacitorPlugin(name = "DocumentScanner", permissions = {
-        @Permission(strings = {Manifest.permission.CAMERA}, alias = DocumentScannerPlugin.CAMERA)
+import com.mantosh.plugins.MdocumentScanner.R;
+import com.tom_roush.pdfbox.android.PDFBoxResourceLoader;
+import com.tom_roush.pdfbox.pdmodel.PDDocument;
+import com.tom_roush.pdfbox.rendering.ImageType;
+import com.tom_roush.pdfbox.rendering.PDFRenderer;
+
+
+@CapacitorPlugin(name = "MdocumentScanner", permissions = {
+        @Permission(strings = {Manifest.permission.CAMERA}, alias = MdocumentScanner.CAMERA)
 })
-public class DocumentScannerPlugin extends Plugin {
+public class MdocumentScanner extends Plugin {
 
     // Permission alias constants
     static final String CAMERA = "camera";
@@ -82,6 +87,7 @@ public class DocumentScannerPlugin extends Plugin {
                 if (pluginCall.getString("responseType").equalsIgnoreCase("base64")) {
                     ret.put("scannedFiles", encodeFileToBase64(file));
                 } else {
+                    //result.getPdf().getUri().toString()
                     ret.put("scannedFiles", result.getPdf().getUri().toString());
                 }
                 ret.put("status", "success");
@@ -93,6 +99,32 @@ public class DocumentScannerPlugin extends Plugin {
             ret.put("status", bridge.getActivity().getString(R.string.error_default_message));
         }
         pluginCall.resolve(ret);
+    }
+
+    private File getScannedResult(File pdfFile) {
+        PDFBoxResourceLoader.init(bridge.getActivity());
+        try {
+            // Load in an already created PDF
+            PDDocument document = PDDocument.load(pdfFile);
+            // Create a renderer for the document
+            PDFRenderer renderer = new PDFRenderer(document);
+            // Render the image to an RGB Bitmap
+            Bitmap pageImage = renderer.renderImage(0, 1, ImageType.RGB);
+
+            // Save the render result to an image
+            String path = bridge.getContext().getCacheDir().getAbsolutePath() + "/scanned_document.jpg";
+            File renderFile = new File(path);
+            FileOutputStream fileOut = new FileOutputStream(renderFile);
+            pageImage.compress(Bitmap.CompressFormat.JPEG, 100, fileOut);
+            fileOut.close();
+            File filePath = new File(path);
+            return filePath;
+        }
+        catch (IOException e)
+        {
+            return null;
+//            Log.e("PdfBox-Android-Sample", "Exception thrown while rendering file", e);
+        }
     }
 
     private static String encodeFileToBase64(File file) {

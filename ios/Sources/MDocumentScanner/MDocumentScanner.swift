@@ -1,8 +1,9 @@
 import Foundation
 import VisionKit
+import PDFKit
 
 @available(iOS 13.0, *)
-@objc public class DocumentScanner: NSObject, VNDocumentCameraViewControllerDelegate {
+@objc public class MdocumentScanner: NSObject, VNDocumentCameraViewControllerDelegate {
     
     /** @property  viewController the document scanner gets called from this view controller */
     private var viewController: UIViewController?
@@ -116,52 +117,41 @@ import VisionKit
         _ controller: VNDocumentCameraViewController,
         didFinishWith scan: VNDocumentCameraScan
     ) {
-      
         var results: [String] = []
-        
-        // loop through all scanned pages
-        for pageNumber in 0...scan.pageCount - 1 {
-            
-            // convert scan UIImage to jpeg data
-            guard let scannedDocumentImage: Data = scan
-                .imageOfPage(at: pageNumber)
-                .jpegData(compressionQuality: CGFloat(self.croppedImageQuality) / CGFloat(100)) else {
-                goBackToPreviousView(controller)
-                self.errorHandler("Unable to get scanned document in jpeg format")
-                return
+        guard scan.pageCount >= 1 else {
+                    goBackToPreviousView(controller)
+                    return
+                }
+                
+        let pdfDocument = PDFDocument()
+
+        for i in 0 ..< scan.pageCount - 1 {
+            if let image = scan.imageOfPage(at: i).resize(toWidth: 250){
+                print("image size is \(image.size.width), \(image.size.height)")
+                // Create a PDF page instance from your image
+                let pdfPage = PDFPage(image: image)
+                // Insert the PDF page into your document
+                pdfDocument.insert(pdfPage!, at: i)
             }
-            
-            switch responseType {
-                case ResponseType.base64:
-                    // convert scan jpeg data to base64
-                    let base64EncodedImage: String = scannedDocumentImage.base64EncodedString()
-                    results.append(base64EncodedImage)
-                case ResponseType.imageFilePath:
-                    do {
-                        // save scan jpeg
-                        let croppedImageFilePath = FileUtil().createImageFile(pageNumber)
-                        try scannedDocumentImage.write(to: croppedImageFilePath)
-                        
-                        // store image file path
-                        results.append(croppedImageFilePath.absoluteString)
-                    } catch {
-                        goBackToPreviousView(controller)
-                        self.errorHandler("Unable to save scanned image: \(error.localizedDescription)")
-                        return
-                    }
-                default:
-                    self.errorHandler(
-                        "responseType must be \(ResponseType.base64) or \(ResponseType.imageFilePath)"
-                    )
-            }
-            
         }
         
-        // exit document scanner
-        goBackToPreviousView(controller)
         
-        // return scanned document results
-        self.successHandler(pdf)
+        // Get the raw data of your PDF document
+        let data = pdfDocument.dataRepresentation()
+        
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let docURL = documentDirectory.appendingPathComponent("Scanned-Docs.pdf")
+        do{
+        try data?.write(to: docURL)
+        }catch(let error)
+        {
+            print("error is \(error.localizedDescription)")
+        }
+        print(docURL.absoluteString)
+        print(docURL.relativePath)
+        goBackToPreviousView(controller)
+        results.append(docURL.relativePath)
+                
     }
     
     /**
@@ -204,18 +194,14 @@ import VisionKit
             controller.dismiss(animated: true)
         }
     }
-
-    class func imageToPDF(_ image:UIImage) -> Data {
-    let data = NSMutableData()
-        
-    let bounds = CGRect(origin: CGPoint.zero, size: image.size)
-        
-    UIGraphicsBeginPDFContextToData(data, bounds, nil)
-    UIGraphicsBeginPDFPage()
-    image.draw(at: CGPoint.zero)
-    UIGraphicsEndPDFContext()
-        
-    return data as Data
-}
  
+}
+
+extension UIImage{
+    func resize(toWidth width: CGFloat) -> UIImage? {
+        let canvas = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+        return UIGraphicsImageRenderer(size: canvas, format: imageRendererFormat).image {
+            _ in draw(in: CGRect(origin: .zero, size: canvas))
+        }
+    }
 }

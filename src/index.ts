@@ -1,10 +1,10 @@
 import { registerPlugin } from '@capacitor/core';
 
-import type { MDocumentScannerPlugin } from './definitions';
+import type { MdocumentScannerPlugin } from './definitions';
 
-const MDocumentScanner = registerPlugin<MDocumentScannerPlugin>('MDocumentScanner', {
-  web: () => import('./web').then(m => new m.MDocumentScannerWeb()),
+const MdocumentScanner = registerPlugin<MdocumentScannerPlugin>('MdocumentScanner', {
+  web: () => import('./web').then(m => new m.MdocumentScannerWeb()),
 });
 
 export * from './definitions';
-export { MDocumentScanner };
+export { MdocumentScanner };

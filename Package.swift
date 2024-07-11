@@ -2,27 +2,27 @@
 import PackageDescription
 
 let package = Package(
-    name: "MDocumentScanner",
+    name: "MdocumentScanner",
     platforms: [.iOS(.v13)],
     products: [
         .library(
-            name: "MDocumentScanner",
-            targets: ["MDocumentScannerPlugin"])
+            name: "MdocumentScanner",
+            targets: ["MdocumentScannerPlugin"])
     ],
     dependencies: [
         .package(url: "https://github.com/ionic-team/capacitor-swift-pm.git", branch: "main")
     ],
     targets: [
         .target(
-            name: "MDocumentScannerPlugin",
+            name: "MdocumentScannerPlugin",
             dependencies: [
                 .product(name: "Capacitor", package: "capacitor-swift-pm"),
                 .product(name: "Cordova", package: "capacitor-swift-pm")
             ],
-            path: "ios/Sources/MDocumentScannerPlugin"),
+            path: "ios/Sources/MdocumentScannerPlugin"),
         .testTarget(
-            name: "MDocumentScannerPluginTests",
-            dependencies: ["MDocumentScannerPlugin"],
-            path: "ios/Tests/MDocumentScannerPluginTests")
+            name: "MdocumentScannerPluginTests",
+            dependencies: ["MdocumentScannerPlugin"],
+            path: "ios/Tests/MdocumentScannerPluginTests")
     ]
 )

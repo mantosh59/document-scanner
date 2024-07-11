@@ -1,5 +1,5 @@
 import XCTest
-@testable import DocumentScannerPlugin
+@testable import MDocumentScannerPlugin
 
 class EGDocScannerTests: XCTestCase {
     func testEcho() {

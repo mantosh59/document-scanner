@@ -6,17 +6,17 @@ import Capacitor
  * here: https://capacitorjs.com/docs/plugins/ios
  */
 @available(iOS 13.0, *)
-@objc(DocumentScannerPlugin)
-public class DocumentScannerPlugin: CAPPlugin, CAPBridgedPlugin {
-    public let identifier = "DocumentScannerPlugin"
-    public let jsName = "DocumentScanner"
+@objc(MdocumentScannerPlugin)
+public class MdocumentScannerPlugin: CAPPlugin, CAPBridgedPlugin {
+    public let identifier = "MdocumentScannerPlugin"
+    public let jsName = "MdocumentScanner"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "scanDocument", returnType: CAPPluginReturnPromise)
     ]
 //    private let implementation = EGDocScanner()
 
     /** @property  documentScanner the document scanner */
-    let documentScanner: DocumentScanner = DocumentScanner()
+    let documentScanner: MdocumentScanner = MdocumentScanner()
     
     /**
      * start the document scanner and register callbacks
