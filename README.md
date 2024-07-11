@@ -54,7 +54,7 @@ scanDocument(options: ScanDocumentOptions) => Promise<ScanDocumentResponse>
 
 | Prop                  | Type                                                  | Description                                                                                                       | Default                                   |
 | --------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| **`maxNumDocuments`** | <code>number</code>                                   | Android only: The maximum number of photos an user can take (not counting photo retakes)                          | <code>: 4</code>                          |
+| **`maxNumDocuments`** | <code>number</code>                                   | Android only: The maximum number of photos an user can take (not counting photo retakes)                          | <code>: 1</code>                          |
 | **`responseType`**    | <code><a href="#responsetype">ResponseType</a></code> | The response comes back in this format on success. It can be the document scan image file paths or base64 images. | <code>: ResponseType.ImageFilePath</code> |
 
 

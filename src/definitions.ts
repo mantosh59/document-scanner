@@ -5,7 +5,7 @@ export interface MdocumentScannerPlugin {
 export interface ScanDocumentOptions {
   /**
    * Android only: The maximum number of photos an user can take (not counting photo retakes)
-   * @default: 4
+   * @default: 1
    */
   maxNumDocuments?: number
 

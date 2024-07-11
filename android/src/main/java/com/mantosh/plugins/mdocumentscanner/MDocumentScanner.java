@@ -25,7 +25,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 
 import com.mantosh.plugins.MdocumentScanner.R;
 import com.tom_roush.pdfbox.android.PDFBoxResourceLoader;
@@ -84,11 +86,14 @@ public class MdocumentScanner extends Plugin {
         if (resultCode == Activity.RESULT_OK && result != null) {
             if (result.getPdf() != null) {
                 File file = new File(result.getPdf().getUri().getPath());
+                // List<String> imagePathArr = new ArrayList<>();
                 if (pluginCall.getString("responseType").equalsIgnoreCase("base64")) {
                     ret.put("scannedFiles", encodeFileToBase64(file));
                 } else {
                     //result.getPdf().getUri().toString()
-                    ret.put("scannedFiles", result.getPdf().getUri().toString());
+//                    imagePathArr.add(result.getPdf().getUri().getPath());
+                    // imagePathArr.add(getScannedResult(file).getPath());
+                    ret.put("scannedFiles",result.getPdf().getUri().getPath());
                 }
                 ret.put("status", "success");
                 pluginCall.resolve(ret);
@@ -123,7 +128,6 @@ public class MdocumentScanner extends Plugin {
         catch (IOException e)
         {
             return null;
-//            Log.e("PdfBox-Android-Sample", "Exception thrown while rendering file", e);
         }
     }
 

@@ -9,7 +9,7 @@ import PDFKit
     private var viewController: UIViewController?
     
     /** @property  successHandler a callback triggered when the user completes the document scan successfully */
-    private var successHandler: ([String]) -> Void
+    private var successHandler: (String) -> Void
     
     /** @property  errorHandler a callback triggered when there's an error */
     private var errorHandler: (String) -> Void
@@ -37,7 +37,7 @@ import PDFKit
      */
     public init(
         _ viewController: UIViewController? = nil,
-        successHandler: @escaping ([String]) -> Void = {_ in },
+        successHandler: @escaping (String) -> Void = {_ in },
         errorHandler: @escaping (String) -> Void = {_ in },
         cancelHandler: @escaping () -> Void = {},
         responseType: String = ResponseType.imageFilePath,
@@ -90,7 +90,7 @@ import PDFKit
      */
     public func startScan(
         _ viewController: UIViewController? = nil,
-        successHandler: @escaping ([String]) -> Void = {_ in },
+        successHandler: @escaping (String) -> Void = {_ in },
         errorHandler: @escaping (String) -> Void = {_ in },
         cancelHandler: @escaping () -> Void = {},
         responseType: String? = ResponseType.imageFilePath,
@@ -117,41 +117,66 @@ import PDFKit
         _ controller: VNDocumentCameraViewController,
         didFinishWith scan: VNDocumentCameraScan
     ) {
-        var results: [String] = []
-        guard scan.pageCount >= 1 else {
-                    goBackToPreviousView(controller)
-                    return
-                }
-                
+//        var results: [String] = []
+        var results: String = ""
         let pdfDocument = PDFDocument()
-
-        for i in 0 ..< scan.pageCount - 1 {
-            if let image = scan.imageOfPage(at: i).resize(toWidth: 250){
-                print("image size is \(image.size.width), \(image.size.height)")
-                // Create a PDF page instance from your image
-                let pdfPage = PDFPage(image: image)
-                // Insert the PDF page into your document
-                pdfDocument.insert(pdfPage!, at: i)
+        // loop through all scanned pages
+        for pageNumber in 0...scan.pageCount - 1 {
+            // convert scan UIImage to jpeg data
+            guard let scannedDocumentImage: Data = scan
+                .imageOfPage(at: pageNumber)
+                .jpegData(compressionQuality: CGFloat(self.croppedImageQuality) / CGFloat(100)) else {
+                goBackToPreviousView(controller)
+                self.errorHandler("Unable to get scanned document in jpeg format")
+                return
             }
+            
+            switch responseType {
+                case ResponseType.base64:
+                    // convert scan jpeg data to base64
+                    let base64EncodedImage: String = scannedDocumentImage.base64EncodedString()
+                    results.append(base64EncodedImage)
+                case ResponseType.imageFilePath:
+                    do {
+                        // save scan jpeg
+//                        let croppedImageFilePath = FileUtil().createImageFile(pageNumber)
+//                        try scannedDocumentImage.write(to: croppedImageFilePath)
+                        let pdfPage = PDFPage(image: scan.imageOfPage(at: pageNumber))
+                        // Insert the PDF page into your document
+                        pdfDocument.insert(pdfPage!, at: pageNumber)
+                        
+                        // Get the raw data of your PDF document
+                                    let data = pdfDocument.dataRepresentation()
+                                    
+                                    let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                                    let docURL = documentDirectory.appendingPathComponent("Scanned-Docs.pdf")
+                                    do{
+                                    try data?.write(to: docURL)
+                                    }catch(let error)
+                                    {
+                                        print("error is \(error.localizedDescription)")
+                                    }
+                        
+                        // store image file path
+                        results = docURL.absoluteString;
+                    } catch {
+                        goBackToPreviousView(controller)
+                        self.errorHandler("Unable to save scanned image: \(error.localizedDescription)")
+                        return
+                    }
+                default:
+                    self.errorHandler(
+                        "responseType must be \(ResponseType.base64) or \(ResponseType.imageFilePath)"
+                    )
+            }
+            
         }
         
-        
-        // Get the raw data of your PDF document
-        let data = pdfDocument.dataRepresentation()
-        
-        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let docURL = documentDirectory.appendingPathComponent("Scanned-Docs.pdf")
-        do{
-        try data?.write(to: docURL)
-        }catch(let error)
-        {
-            print("error is \(error.localizedDescription)")
-        }
-        print(docURL.absoluteString)
-        print(docURL.relativePath)
+        // exit document scanner
         goBackToPreviousView(controller)
-        results.append(docURL.relativePath)
-                
+        
+        // return scanned document results
+        self.successHandler(results)
     }
     
     /**
@@ -196,6 +221,7 @@ import PDFKit
     }
  
 }
+
 
 extension UIImage{
     func resize(toWidth width: CGFloat) -> UIImage? {
