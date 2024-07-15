@@ -32,7 +32,7 @@ public class MdocumentScannerPlugin: CAPPlugin, CAPBridgedPlugin {
                 print(scannedDocumentImages)
                 call.resolve([
                     "status": "success",
-                    "scannedFiles": scannedDocumentImages
+                    "scannedFile": scannedDocumentImages
                 ])
             },
             errorHandler: { (errorMessage: String) in
