@@ -1,8 +1,6 @@
 # mdocument-scanner
 
-Document scanner
-
-Plugin is in development stage.
+Document scanner - This is a Capacitor plugin that lets you scan documents using Android and iOS.
 
 ## Install
 
