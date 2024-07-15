@@ -25,9 +25,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.Base64;
-import java.util.List;
 
 import com.mantosh.plugins.MdocumentScanner.R;
 import com.tom_roush.pdfbox.android.PDFBoxResourceLoader;
@@ -61,9 +59,7 @@ public class MdocumentScanner extends Plugin {
 
         GmsDocumentScannerOptions.Builder options =
                 new GmsDocumentScannerOptions.Builder()
-                        .setResultFormats(
-                                GmsDocumentScannerOptions.RESULT_FORMAT_JPEG,
-                                GmsDocumentScannerOptions.RESULT_FORMAT_PDF)
+                        .setResultFormats(GmsDocumentScannerOptions.RESULT_FORMAT_PDF)
                         .setScannerMode(SCANNER_MODE_FULL)
                         .setPageLimit(call.getInt("maxNumDocuments") != null ? call.getInt("maxNumDocuments") : 1)
                         .setGalleryImportAllowed(false);
@@ -93,7 +89,7 @@ public class MdocumentScanner extends Plugin {
                     //result.getPdf().getUri().toString()
 //                    imagePathArr.add(result.getPdf().getUri().getPath());
                     // imagePathArr.add(getScannedResult(file).getPath());
-                    ret.put("scannedFiles",result.getPdf().getUri().getPath());
+                    ret.put("scannedFiles",result.getPdf().getUri().toString());
                 }
                 ret.put("status", "success");
                 pluginCall.resolve(ret);

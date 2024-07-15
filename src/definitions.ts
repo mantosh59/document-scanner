@@ -31,10 +31,10 @@ export enum ResponseType {
 
 export interface ScanDocumentResponse {
   /**
-   * This is an array with either file paths or base64 images for the
+   * This is an array with either file path or base64 for the
    * document scan.
    */
-  scannedFiles?: string
+  scannedFile?: string
 
   /**
    * The status lets you know if the document scan completes successfully,

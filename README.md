@@ -11,6 +11,20 @@ npm install mdocument-scanner
 npx cap sync
 ```
 
+## Android Configuration
+Add these lines to android/app/src/main/res/xml/file_paths.xml
+<?xml version="1.0" encoding="utf-8" ?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-path name="external_files" path="."/>
+    <cache-path name="mlkit_docscan_ui_client" path="." />
+</paths>
+
+## iOS Configuration
+iOS requires the following usage description be added and filled out for your app in Info.plist:
+```bash
+NSCameraUsageDescription (Privacy - Camera Usage Description)
+```
+
 ## API
 
 <docgen-index>
@@ -46,7 +60,7 @@ scanDocument(options: ScanDocumentOptions) => Promise<ScanDocumentResponse>
 
 | Prop               | Type                                                                              | Description                                                                                                                       |
 | ------------------ | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| **`scannedFiles`** | <code>string</code>                                                               | This is an array with either file paths or base64 images for the document scan.                                                   |
+| **`scannedFile`** | <code>string</code>                                                               | This will hold either file path or base64 image for the document scan.                                                   |
 | **`status`**       | <code><a href="#scandocumentresponsestatus">ScanDocumentResponseStatus</a></code> | The status lets you know if the document scan completes successfully, or if the user cancels before completing the document scan. |
 
 
