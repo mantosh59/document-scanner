@@ -1,6 +1,6 @@
 {
   "name": "mdocument-scanner",
-  "version": "0.0.1-beta07",
+  "version": "0.0.1-beta08",
   "description": "Mdocument scanner",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
