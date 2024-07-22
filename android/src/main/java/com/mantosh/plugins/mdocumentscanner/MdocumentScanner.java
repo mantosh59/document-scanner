@@ -84,12 +84,12 @@ public class MdocumentScanner extends Plugin {
                 File file = new File(result.getPdf().getUri().getPath());
                 // List<String> imagePathArr = new ArrayList<>();
                 if (pluginCall.getString("responseType").equalsIgnoreCase("base64")) {
-                    ret.put("scannedFiles", encodeFileToBase64(file));
+                    ret.put("scannedFile", encodeFileToBase64(file));
                 } else {
                     //result.getPdf().getUri().toString()
 //                    imagePathArr.add(result.getPdf().getUri().getPath());
                     // imagePathArr.add(getScannedResult(file).getPath());
-                    ret.put("scannedFiles",result.getPdf().getUri().toString());
+                    ret.put("scannedFile",result.getPdf().getUri().toString());
                 }
                 ret.put("status", "success");
                 pluginCall.resolve(ret);
