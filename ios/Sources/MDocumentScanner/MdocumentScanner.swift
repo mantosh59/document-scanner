@@ -23,6 +23,9 @@ import PDFKit
     /** @property  croppedImageQuality the 0 - 100 quality of the cropped image */
     private var croppedImageQuality: Int
     
+    /** @properety outputAsMultiplePath for getting output as separate file or single file */
+    private var outputAsMultiplePath: Bool
+    
     /**
      constructor for DocScanner
 
@@ -41,6 +44,7 @@ import PDFKit
         errorHandler: @escaping (String) -> Void = {_ in },
         cancelHandler: @escaping () -> Void = {},
         responseType: String = ResponseType.imageFilePath,
+        outputAsMultiplePath: Bool = false,
         croppedImageQuality: Int = 100
     ) {
         self.viewController = viewController
@@ -48,6 +52,7 @@ import PDFKit
         self.errorHandler = errorHandler
         self.cancelHandler = cancelHandler
         self.responseType = responseType
+        self.outputAsMultiplePath = outputAsMultiplePath
         self.croppedImageQuality = croppedImageQuality
     }
     
@@ -94,6 +99,7 @@ import PDFKit
         errorHandler: @escaping (String) -> Void = {_ in },
         cancelHandler: @escaping () -> Void = {},
         responseType: String? = ResponseType.imageFilePath,
+        outputAsMultiplePath: Bool? = false,
         croppedImageQuality: Int? = 100
     ) {
         self.viewController = viewController
@@ -101,6 +107,7 @@ import PDFKit
         self.errorHandler = errorHandler
         self.cancelHandler = cancelHandler
         self.responseType = responseType ?? ResponseType.imageFilePath
+        self.outputAsMultiplePath = outputAsMultiplePath ?? false
         self.croppedImageQuality = croppedImageQuality ?? 100
         
         self.startScan()
@@ -117,8 +124,7 @@ import PDFKit
         _ controller: VNDocumentCameraViewController,
         didFinishWith scan: VNDocumentCameraScan
     ) {
-//        var results: [String] = []
-        var results: String = ""
+        var results: [String] = []
         let pdfDocument = PDFDocument()
         // loop through all scanned pages
         for pageNumber in 0...scan.pageCount - 1 {
@@ -131,6 +137,7 @@ import PDFKit
                 return
             }
             
+            
             switch responseType {
                 case ResponseType.base64:
                     // convert scan jpeg data to base64
@@ -138,27 +145,34 @@ import PDFKit
                     results.append(base64EncodedImage)
                 case ResponseType.imageFilePath:
                     do {
-                        // save scan jpeg
-//                        let croppedImageFilePath = FileUtil().createImageFile(pageNumber)
-//                        try scannedDocumentImage.write(to: croppedImageFilePath)
-                        let pdfPage = PDFPage(image: scan.imageOfPage(at: pageNumber))
-                        // Insert the PDF page into your document
-                        pdfDocument.insert(pdfPage!, at: pageNumber)
-                        
-                        // Get the raw data of your PDF document
-                                    let data = pdfDocument.dataRepresentation()
-                                    
-                                    let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                                    let docURL = documentDirectory.appendingPathComponent("Scanned-Docs.pdf")
-                                    do{
-                                    try data?.write(to: docURL)
-                                    }catch(let error)
-                                    {
-                                        print("error is \(error.localizedDescription)")
-                                    }
-                        
-                        // store image file path
-                        results = docURL.absoluteString;
+                        if(outputAsMultiplePath == true){
+                            // save scan jpeg
+                            let croppedImageFilePath = FileUtil().createImageFile(pageNumber)
+                            try scannedDocumentImage.write(to: croppedImageFilePath)
+                            
+                            // store image file path
+                            results.append(croppedImageFilePath.absoluteString)
+                        }else {
+                            let pdfPage = PDFPage(image: scan.imageOfPage(at: pageNumber))
+                            // Insert the PDF page into your document
+                            pdfDocument.insert(pdfPage!, at: pageNumber)
+                            
+                            // Get the raw data of your PDF document
+                                        let data = pdfDocument.dataRepresentation()
+                                        
+                                        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                                        let docURL = documentDirectory.appendingPathComponent("Scanned-Docs.pdf")
+                                        do{
+                                        try data?.write(to: docURL)
+                                        }catch(let error)
+                                        {
+                                            print("error is \(error.localizedDescription)")
+                                        }
+                            
+                            // store image file path
+                            results.append(docURL.absoluteString);
+                        }
+                       
                     } catch {
                         goBackToPreviousView(controller)
                         self.errorHandler("Unable to save scanned image: \(error.localizedDescription)")
@@ -217,6 +231,48 @@ import PDFKit
     private func goBackToPreviousView(_ controller: VNDocumentCameraViewController) {
         DispatchQueue.main.async {
             controller.dismiss(animated: true)
+        }
+    }
+
+    private multiple(){
+         var results: [String] = []
+        
+        // loop through all scanned pages
+        for pageNumber in 0...scan.pageCount - 1 {
+            
+            // convert scan UIImage to jpeg data
+            guard let scannedDocumentImage: Data = scan
+                .imageOfPage(at: pageNumber)
+                .jpegData(compressionQuality: CGFloat(self.croppedImageQuality) / CGFloat(100)) else {
+                goBackToPreviousView(controller)
+                self.errorHandler("Unable to get scanned document in jpeg format")
+                return
+            }
+            
+            switch responseType {
+                case ResponseType.base64:
+                    // convert scan jpeg data to base64
+                    let base64EncodedImage: String = scannedDocumentImage.base64EncodedString()
+                    results.append(base64EncodedImage)
+                case ResponseType.imageFilePath:
+                    do {
+                        // save scan jpeg
+                        let croppedImageFilePath = FileUtil().createImageFile(pageNumber)
+                        try scannedDocumentImage.write(to: croppedImageFilePath)
+                        
+                        // store image file path
+                        results.append(croppedImageFilePath.absoluteString)
+                    } catch {
+                        goBackToPreviousView(controller)
+                        self.errorHandler("Unable to save scanned image: \(error.localizedDescription)")
+                        return
+                    }
+                default:
+                    self.errorHandler(
+                        "responseType must be \(ResponseType.base64) or \(ResponseType.imageFilePath)"
+                    )
+            }
+            
         }
     }
  

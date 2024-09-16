@@ -29,7 +29,6 @@ public class MdocumentScannerPlugin: CAPPlugin, CAPBridgedPlugin {
             bridge?.viewController,
             successHandler: { (scannedDocumentImages: String) in
                 // document scan success
-                print(scannedDocumentImages)
                 call.resolve([
                     "status": "success",
                     "scannedFile": scannedDocumentImages
@@ -45,6 +44,7 @@ public class MdocumentScannerPlugin: CAPPlugin, CAPBridgedPlugin {
                     "status": "cancel"
                 ])
             },
-            responseType: call.getString("responseType")
+            responseType: call.getString("responseType"),
+            outputAsMultiplePath: call.getString("outputAsMultiplePath")
         )
     }}
