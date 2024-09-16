@@ -14,7 +14,13 @@ export interface ScanDocumentOptions {
    * scan image file paths or base64 images.
    * @default: ResponseType.ImageFilePath
    */
-  responseType?: ResponseType
+  responseType?: ResponseType,
+
+  /**
+   * If true it will output scanned files as array of image URI
+   * @default: false
+   */
+  outputAsMultiplePath?: boolean,
 }
 
 export enum ResponseType {
@@ -34,7 +40,7 @@ export interface ScanDocumentResponse {
    * This is an array with either file path or base64 for the
    * document scan.
    */
-  scannedFile?: string
+  scannedFiles?: string[]
 
   /**
    * The status lets you know if the document scan completes successfully,
