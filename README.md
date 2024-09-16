@@ -57,18 +57,19 @@ scanDocument(options: ScanDocumentOptions) => Promise<ScanDocumentResponse>
 
 #### ScanDocumentResponse
 
-| Prop              | Type                                                                              | Description                                                                                                                       |
-| ----------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| **`scannedFile`** | <code>string</code>                                                               | This is an array with either file path or base64 for the document scan.                                                           |
-| **`status`**      | <code><a href="#scandocumentresponsestatus">ScanDocumentResponseStatus</a></code> | The status lets you know if the document scan completes successfully, or if the user cancels before completing the document scan. |
+| Prop               | Type                                                                              | Description                                                                                                                       |
+| ------------------ | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **`scannedFiles`** | <code>string[]</code>                                                             | This is an array with either file path or base64 for the document scan.                                                           |
+| **`status`**       | <code><a href="#scandocumentresponsestatus">ScanDocumentResponseStatus</a></code> | The status lets you know if the document scan completes successfully, or if the user cancels before completing the document scan. |
 
 
 #### ScanDocumentOptions
 
-| Prop                  | Type                                                  | Description                                                                                                       | Default                                   |
-| --------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| **`maxNumDocuments`** | <code>number</code>                                   | Android only: The maximum number of photos an user can take (not counting photo retakes)                          | <code>: 1</code>                          |
-| **`responseType`**    | <code><a href="#responsetype">ResponseType</a></code> | The response comes back in this format on success. It can be the document scan image file paths or base64 images. | <code>: ResponseType.ImageFilePath</code> |
+| Prop                       | Type                                                  | Description                                                                                                       | Default                                   |
+| -------------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| **`maxNumDocuments`**      | <code>number</code>                                   | Android only: The maximum number of photos an user can take (not counting photo retakes)                          | <code>: 1</code>                          |
+| **`responseType`**         | <code><a href="#responsetype">ResponseType</a></code> | The response comes back in this format on success. It can be the document scan image file paths or base64 images. | <code>: ResponseType.ImageFilePath</code> |
+| **`outputAsMultiplePath`** | <code>boolean</code>                                  | If true it will output scanned files as array of image URI                                                        | <code>: false</code>                      |
 
 
 ### Enums
