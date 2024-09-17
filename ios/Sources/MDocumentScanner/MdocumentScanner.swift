@@ -9,7 +9,7 @@ import PDFKit
     private var viewController: UIViewController?
     
     /** @property  successHandler a callback triggered when the user completes the document scan successfully */
-    private var successHandler: (String) -> Void
+    private var successHandler: ([String]) -> Void
     
     /** @property  errorHandler a callback triggered when there's an error */
     private var errorHandler: (String) -> Void
@@ -40,7 +40,7 @@ import PDFKit
      */
     public init(
         _ viewController: UIViewController? = nil,
-        successHandler: @escaping (String) -> Void = {_ in },
+        successHandler: @escaping ([String]) -> Void = {_ in },
         errorHandler: @escaping (String) -> Void = {_ in },
         cancelHandler: @escaping () -> Void = {},
         responseType: String = ResponseType.imageFilePath,
@@ -95,7 +95,7 @@ import PDFKit
      */
     public func startScan(
         _ viewController: UIViewController? = nil,
-        successHandler: @escaping (String) -> Void = {_ in },
+        successHandler: @escaping ([String]) -> Void = {_ in },
         errorHandler: @escaping (String) -> Void = {_ in },
         cancelHandler: @escaping () -> Void = {},
         responseType: String? = ResponseType.imageFilePath,
@@ -231,48 +231,6 @@ import PDFKit
     private func goBackToPreviousView(_ controller: VNDocumentCameraViewController) {
         DispatchQueue.main.async {
             controller.dismiss(animated: true)
-        }
-    }
-
-    private multiple(){
-         var results: [String] = []
-        
-        // loop through all scanned pages
-        for pageNumber in 0...scan.pageCount - 1 {
-            
-            // convert scan UIImage to jpeg data
-            guard let scannedDocumentImage: Data = scan
-                .imageOfPage(at: pageNumber)
-                .jpegData(compressionQuality: CGFloat(self.croppedImageQuality) / CGFloat(100)) else {
-                goBackToPreviousView(controller)
-                self.errorHandler("Unable to get scanned document in jpeg format")
-                return
-            }
-            
-            switch responseType {
-                case ResponseType.base64:
-                    // convert scan jpeg data to base64
-                    let base64EncodedImage: String = scannedDocumentImage.base64EncodedString()
-                    results.append(base64EncodedImage)
-                case ResponseType.imageFilePath:
-                    do {
-                        // save scan jpeg
-                        let croppedImageFilePath = FileUtil().createImageFile(pageNumber)
-                        try scannedDocumentImage.write(to: croppedImageFilePath)
-                        
-                        // store image file path
-                        results.append(croppedImageFilePath.absoluteString)
-                    } catch {
-                        goBackToPreviousView(controller)
-                        self.errorHandler("Unable to save scanned image: \(error.localizedDescription)")
-                        return
-                    }
-                default:
-                    self.errorHandler(
-                        "responseType must be \(ResponseType.base64) or \(ResponseType.imageFilePath)"
-                    )
-            }
-            
         }
     }
  
