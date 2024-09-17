@@ -27,11 +27,11 @@ public class MdocumentScannerPlugin: CAPPlugin, CAPBridgedPlugin {
         // launch the document scanner
         documentScanner.startScan(
             bridge?.viewController,
-            successHandler: { (scannedDocumentImages: String) in
+            successHandler: { (scannedDocumentImages: [String]) in
                 // document scan success
                 call.resolve([
                     "status": "success",
-                    "scannedFile": scannedDocumentImages
+                    "scannedFiles": scannedDocumentImages
                 ])
             },
             errorHandler: { (errorMessage: String) in
@@ -45,6 +45,6 @@ public class MdocumentScannerPlugin: CAPPlugin, CAPBridgedPlugin {
                 ])
             },
             responseType: call.getString("responseType"),
-            outputAsMultiplePath: call.getString("outputAsMultiplePath")
+            outputAsMultiplePath: call.getBool("outputAsMultiplePath")
         )
     }}
