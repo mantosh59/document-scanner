@@ -40,13 +40,13 @@ export interface ScanDocumentResponse {
    * This is an array with either file path or base64 for the
    * document scan.
    */
-  scannedFiles?: string[]
+  scannedFiles: string[]
 
   /**
    * The status lets you know if the document scan completes successfully,
    * or if the user cancels before completing the document scan.
    */
-  status?: ScanDocumentResponseStatus
+  status: ScanDocumentResponseStatus
 }
 
 export enum ScanDocumentResponseStatus {
