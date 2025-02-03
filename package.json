@@ -1,6 +1,6 @@
 {
   "name": "mdocument-scanner",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Mdocument scanner",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -46,13 +46,13 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@capacitor/android": "^6.1.2",
-    "@capacitor/core": "^6.1.2",
-    "@capacitor/docgen": "^0.2.2",
-    "@capacitor/ios": "^6.1.2",
+    "@capacitor/android": "^7.0.1",
+    "@capacitor/core": "^7.0.1",
+    "@capacitor/docgen": "^0.3.0",
+    "@capacitor/ios": "^7.0.1",
     "@ionic/eslint-config": "^0.4.0",
     "@ionic/prettier-config": "^4.0.0",
-    "@ionic/swiftlint-config": "^1.1.2",
+    "@ionic/swiftlint-config": "^2.0.0",
     "eslint": "^8.57.0",
     "prettier": "~3.3.3",
     "prettier-plugin-java": "~2.6.4",
@@ -62,7 +62,7 @@
     "typescript": "~5.4.5"
   },
   "peerDependencies": {
-    "@capacitor/core": "^6.1.2"
+    "@capacitor/core": "^7.0.1"
   },
   "prettier": "@ionic/prettier-config",
   "swiftlint": "@ionic/swiftlint-config",
